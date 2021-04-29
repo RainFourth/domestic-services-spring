@@ -1,0 +1,36 @@
+package com.rrain.springdomesticservicesapp.config;
+
+import org.springframework.stereotype.Component;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+
+/* Filter Chain Test Class */
+//@Component
+public class FilterChainTestConfig implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("request number "+cnt+++": "+servletRequest.toString());
+        /*HttpServletResponse response = (HttpServletResponse) servletResponse;
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "*");*/
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+    private int cnt = 0;
+
+    @Override
+    public void destroy() {
+
+    }
+
+}
